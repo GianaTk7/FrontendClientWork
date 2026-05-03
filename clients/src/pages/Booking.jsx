@@ -229,7 +229,6 @@ const Booking = () => {
               style={styles.input}
             />
           </div>
-
           <div style={styles.formGroup}>
             <label style={styles.label}>Select Time *</label>
             <select
@@ -245,7 +244,6 @@ const Booking = () => {
               ))}
             </select>
           </div>
-
           <div style={styles.formGroup}>
             <label style={styles.label}>Hairstyle Type *</label>
             <select
@@ -261,7 +259,6 @@ const Booking = () => {
               ))}
             </select>
           </div>
-
           <div style={styles.formGroup}>
             <label style={styles.label}>Special Requests (Optional)</label>
             <textarea
@@ -272,7 +269,6 @@ const Booking = () => {
               style={styles.textarea}
             />
           </div>
-
           <button
             type="submit"
             disabled={loading}
