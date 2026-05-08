@@ -11,6 +11,8 @@ const AdminDashboard = () => {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [messageResponse, setMessageResponse] = useState('');
   const [loading, setLoading] = useState(true);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+
 
   useEffect(() => {
     fetchData();
@@ -21,9 +23,9 @@ const AdminDashboard = () => {
 const token = localStorage.getItem('admin_token');
 
 const [bookingsRes, statsRes, messagesRes] = await Promise.all([
-  axios.get(`http://localhost:8000/api/bookings/admin/all?token=${token}`),
-  axios.get(`http://localhost:8000/api/bookings/stats/daily?token=${token}`),
-  axios.get(`http://localhost:8000/api/messages/unread?token=${token}`),
+  axios.get(`${BACKEND_URL}/api/bookings/admin/all?token=${token}`),
+  axios.get(`${BACKEND_URL}/api/bookings/stats/daily?token=${token}`),
+  axios.get(`${BACKEND_URL}/api/messages/unread?token=${token}`),
 ]);
       setBookings(bookingsRes.data);
       setStats(statsRes.data);
@@ -41,7 +43,7 @@ const [bookingsRes, statsRes, messagesRes] = await Promise.all([
       const token = localStorage.getItem('admin_token');
 
 await axios.put(
-  `http://localhost:8000/api/bookings/${bookingId}/status?token=${token}`,
+  `${BACKEND_URL}/api/bookings/${bookingId}/status?token=${token}`,
   { status: status }
 );
       toast.success('Booking status updated');

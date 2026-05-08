@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Videos = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
 
   useEffect(() => {
     // Simulate loading videos from API

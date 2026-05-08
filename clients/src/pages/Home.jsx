@@ -33,960 +33,368 @@ const Home = () => {
   });
 
   const services = [
-    { name: 'Box Braids', duration: '3–5 hrs', price: 'From R650', img: 'https://images.unsplash.com/photo-1622186477895-f2af6a0f5a97?w=500' },
-    { name: 'Wig Installation', duration: '1–2 hrs', price: 'From R450', img: 'https://images.unsplash.com/photo-1560869713-7d0a29430803?w=500' },
-    { name: 'Knotless Braids', duration: '4–6 hrs', price: 'From R800', img: 'https://images.unsplash.com/photo-1614272537596-d6ff57e9b64c?w=500' },
-    { name: 'Silk Press', duration: '1–2 hrs', price: 'From R350', img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500' },
+    { name: 'Box Braids',      img: "/boxbraids.jpg" },
+    { name: 'Wig Installation', img: "/wigsinstall.jpg" },
+    { name: 'Knotless Braids',  img: "/knotless.jpg" },
+    { name: 'Silk Press',       img: "/silk.jpg" },
   ];
 
   const testimonials = [
-    { name: 'Lerato M.', text: 'Absolutely obsessed with my knotless braids. The team is so talented and the salon feels like a sanctuary.', stars: 5 },
-    { name: 'Thandi K.', text: "Best wig install I've ever had. Natural, flawless, undetectable. I feel like a whole new woman!", stars: 5 },
-    { name: 'Nompumelelo D.', text: 'Been coming here for two years and every single visit is better than the last. Pure luxury.', stars: 5 },
+    { name: 'Lerato M.',      text: 'Absolutely obsessed with my knotless braids. The team is so talented and the salon feels like a sanctuary.',      stars: 5 },
+    { name: 'Thandi K.',      text: "Best wig install I've ever had. Natural, flawless, undetectable. I feel like a whole new woman!",                  stars: 5 },
+    { name: 'Nompumelelo D.', text: 'Been coming here for two years and every single visit is better than the last. Pure luxury.',                     stars: 5 },
   ];
 
-  const steps = [
-    { n: '01', t: 'Consultation', d: 'We start with your vision — style preferences, hair health, and desired outcome. Every client is unique.' },
-    { n: '02', t: 'Custom Preparation', d: 'Your hair is washed, conditioned, and prepped using premium products chosen for your hair type.' },
-    { n: '03', t: 'Expert Styling', d: "Our stylists work with precision and care, creating the look you've envisioned — no rushing, no cutting corners." },
-    { n: '04', t: 'Finishing & Aftercare', d: 'We finish with a professional seal and walk you through how to maintain your style at home.' },
-  ];
+const steps = [
+  { n: '01', t: 'Consultation', d: 'We discuss your vision, style preferences, and hair goals.' },
+  { n: '02', t: 'Custom Preparation', d: 'Your hair is washed and prepped with premium products for your hair type.' },
+  { n: '03', t: 'Expert Styling', d: 'Our stylists create your look with precision and care.' },
+  { n: '04', t: 'Finishing & Aftercare', d: 'We seal your style and guide you on home maintenance.' },
+];
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap');
+
+        :root {
+          --rose:       #c2185b;
+          --rose-deep:  #880e4f;
+          --rose-light: #f8bbd0;
+          --rose-pale:  #fce4ec;
+          --rose-blush: #fff0f5;
+          --cream:      #fffaf8;
+          --dark:       #1a0a10;
+          --muted:      #a08090;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-          font-family: 'DM Sans', sans-serif;
-          background: #fff;
-          color: #1a1a1a;
-          overflow-x: hidden;
-        }
-
-        .salon-root {
-          background: #fff;
-          min-height: 100vh;
-        }
-
-        /* NAV */
-        .nav {
-          position: fixed;
-          top: 0; left: 0; right: 0;
-          z-index: 100;
-          padding: 1.4rem 5%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background: #fff;
-          border-bottom: 1px solid #fce4ec;
-        }
-        .nav-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.6rem;
-          font-weight: 400;
-          letter-spacing: 0.05em;
-          color: #c2185b;
-        }
-        .nav-links {
-          display: flex;
-          gap: 2.5rem;
-          list-style: none;
-        }
-        .nav-links a {
-          color: #999;
-          text-decoration: none;
-          font-size: 0.78rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          transition: color 0.2s;
-        }
-        .nav-links a:hover { color: #c2185b; }
-        .nav-book {
-          background: #c2185b;
-          color: #fff;
-          border: none;
-          padding: 0.65rem 1.8rem;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 0.75rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: background 0.2s;
-          text-decoration: none;
-          display: inline-block;
-        }
-        .nav-book:hover { background: #ad1457; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
         /* HERO */
-        .hero {
-          margin-top: 65px;
-          height: calc(100vh - 65px);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          overflow: hidden;
-        }
-        .hero-left {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding: 4rem 6% 4rem 8%;
-          background: #fff;
-          position: relative;
-        }
-        .hero-left::after {
-          content: '';
-          position: absolute;
-          right: 0; top: 0; bottom: 0;
-          width: 1px;
-          background: linear-gradient(to bottom, transparent, #f8bbd0, transparent);
-        }
-        .hero-eyebrow {
-          font-size: 0.68rem;
-          letter-spacing: 0.35em;
-          text-transform: uppercase;
-          color: #c2185b;
-          margin-bottom: 1.6rem;
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-        }
-        .hero-eyebrow::before {
-          content: '';
-          display: block;
-          width: 32px;
-          height: 1px;
-          background: #c2185b;
-        }
-        .hero-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 4.5rem;
-          font-weight: 400;
-          line-height: 1.1;
-          color: #1a1a1a;
-          margin-bottom: 1.8rem;
-        }
-        .hero-title em {
-          font-style: italic;
-          color: #c2185b;
-        }
-        .hero-sub {
-          font-size: 0.92rem;
-          font-weight: 300;
-          color: #999;
-          line-height: 1.9;
-          margin-bottom: 2.8rem;
-          max-width: 400px;
-        }
-        .hero-cta {
-          display: flex;
-          gap: 1.2rem;
-          align-items: center;
-        }
-        .btn-pink {
-          background: #c2185b;
-          color: #fff;
-          padding: 0.9rem 2.2rem;
-          text-decoration: none;
-          font-size: 0.75rem;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          font-weight: 500;
-          display: inline-block;
-          transition: background 0.2s;
-        }
-        .btn-pink:hover { background: #ad1457; }
-        .btn-outline-pink {
-          border: 1px solid #f8bbd0;
-          color: #c2185b;
-          padding: 0.9rem 2rem;
-          text-decoration: none;
-          font-size: 0.75rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          display: inline-block;
-          transition: all 0.2s;
-          background: transparent;
-        }
-        .btn-outline-pink:hover { background: #fce4ec; }
-        .hero-right {
-          position: relative;
-          overflow: hidden;
-          background: #fce4ec;
-        }
-        .hero-right img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-        .hero-badge {
-          position: absolute;
-          top: 2.5rem;
-          left: 2rem;
-          background: #fff;
-          border: 1px solid #f8bbd0;
-          padding: 1rem 1.4rem;
-        }
-        .hero-badge-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.2rem;
-          color: #c2185b;
-          font-weight: 400;
-          line-height: 1;
-        }
-        .hero-badge-label {
-          font-size: 0.62rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: #bbb;
-          margin-top: 0.3rem;
-          line-height: 1.5;
-        }
-        .hero-ribbon {
-          position: absolute;
-          bottom: 2.5rem;
-          right: 2rem;
-          background: #c2185b;
-          padding: 1rem 1.6rem;
-          text-align: center;
-          color: #fff;
-        }
-        .hero-ribbon-small {
-          font-size: 0.62rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          line-height: 2;
-          display: block;
-        }
-        .hero-ribbon-bold {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.1rem;
-          font-style: italic;
-          display: block;
-        }
+        .hero { height: 100vh; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+        .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 4rem 6% 4rem 7%; background: var(--cream); position: relative; }
+        .hero-left::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: linear-gradient(to bottom, transparent, var(--rose-light), transparent); }
+        .hero-eyebrow { font-size: 0.87rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 400; }
+        .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--rose); flex-shrink: 0; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 400; line-height: 1.05; color: var(--dark); margin-bottom: 1.8rem; }
+        .hero-title em { font-style: italic; color: var(--rose); display: block; }
+        .hero-sub { font-size: 1.3rem; font-weight: 300; color: black; line-height: 2; margin-bottom: 3rem; max-width: 380px; }
+        .hero-cta { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .btn-rose { background: var(--rose); color: #fff; padding: 0.95rem 2.2rem; text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; display: inline-block; transition: background 0.2s; }
+        .btn-rose:hover { background: var(--rose-deep); }
+        .btn-ghost { border: 1px solid var(--rose-light); color: var(--rose); padding: 0.95rem 1.8rem; text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; display: inline-block; transition: all 0.2s; background: transparent; }
+        .btn-ghost:hover { background: var(--rose-pale); }
+        .hero-right { position: relative; overflow: hidden; background: var(--rose-pale); }
+        .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.92); }
+        .hero-badge { position: absolute; top: 2.5rem; left: 2rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); border: 1px solid var(--rose-light); padding: 1rem 1.4rem; }
+        .hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; color: var(--rose); font-weight: 400; line-height: 1; }
+        .hero-badge-label { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: #bbb; margin-top: 0.3rem; line-height: 1.5; }
+        .hero-ribbon { position: absolute; bottom: 2.5rem; right: 2rem; background: var(--rose); padding: 1rem 1.6rem; text-align: center; color: #fff; }
+        .hero-ribbon-small { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; line-height: 2; display: block; opacity: 0.8; }
+        .hero-ribbon-bold { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; display: block; }
 
         /* TICKER */
-        .ticker {
-          background: #fce4ec;
-          padding: 0.75rem 0;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        .ticker-track {
-          display: inline-block;
-          animation: tickMove 22s linear infinite;
-        }
-        .ticker-item {
-          display: inline-block;
-          font-size: 0.7rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: #c2185b;
-          padding: 0 2.5rem;
-        }
-        .ticker-dot {
-          display: inline-block;
-          width: 5px;
-          height: 5px;
-          background: #f48fb1;
-          border-radius: 50%;
-          vertical-align: middle;
-        }
-        @keyframes tickMove {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+        .ticker { background: var(--rose-pale); padding: 0.8rem 0; overflow: hidden; white-space: nowrap; border-top: 1px solid var(--rose-light); border-bottom: 1px solid var(--rose-light); }
+        .ticker-track { display: inline-block; animation: tickMove 26s linear infinite; }
+        .ticker-item { display: inline-block; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose); padding: 0 2.5rem; font-weight: 400; }
+        .ticker-dot { display: inline-block; width: 4px; height: 4px; background: var(--rose-light); border-radius: 50%; vertical-align: middle; }
+        @keyframes tickMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* ABOUT + VIDEO */
-        .about-section {
-          padding: 7rem 7%;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 5rem;
-          align-items: center;
-          background: #fff;
-        }
-        .about-label {
-          font-size: 0.68rem;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: #c2185b;
-          margin-bottom: 1.2rem;
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-        }
-        .about-label::before {
-          content: '';
-          display: block;
-          width: 32px;
-          height: 1px;
-          background: #c2185b;
-        }
-        .about-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.8rem;
-          font-weight: 400;
-          line-height: 1.2;
-          color: #1a1a1a;
-          margin-bottom: 1.6rem;
-        }
-        .about-title em { font-style: italic; color: #c2185b; }
-        .about-text {
-          font-size: 0.88rem;
-          color: #999;
-          line-height: 2;
-          font-weight: 300;
-          margin-bottom: 1.2rem;
-        }
-        .about-stats {
-          display: flex;
-          gap: 3rem;
-          margin-top: 2rem;
-          padding-top: 2rem;
-          border-top: 1px solid #fce4ec;
-        }
-        .stat-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.4rem;
-          color: #c2185b;
-          line-height: 1;
-        }
-        .stat-label {
-          font-size: 0.67rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: #bbb;
-          margin-top: 0.3rem;
-        }
+        /* SHARED */
+        .section-eyebrow { font-size: 1.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.8rem; font-weight: 400; }
+        .section-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--rose); flex-shrink: 0; }
+        .section-heading { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 400; line-height: 1.15; color: var(--dark); margin-bottom: 1.6rem; }
+        .section-heading em { font-style: italic; color: var(--rose); }
+        .body-text { font-size: 1.1rem; color: black; line-height: 2; font-weight: 300; margin-bottom: 1.2rem; }
 
-        /* VIDEO BOX */
+        /* ABOUT */
+        .about-section { padding: 8rem 7%; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; background: #fff; }
+        .about-stats { display: flex; gap: 2.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rose-pale); }
+        .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; color: var(--rose); line-height: 1; font-weight: 400; }
+        .stat-label { font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: #16821d; margin-top: 0.3rem; }
         .video-box { position: relative; }
-        .video-corner-line {
-          position: absolute;
-          top: -16px; left: -16px;
-          width: 44px; height: 44px;
-          border-top: 1px solid #f8bbd0;
-          border-left: 1px solid #f8bbd0;
-          z-index: 2;
-        }
-        .video-frame {
-          position: relative;
-          overflow: hidden;
-          border-radius: 2px;
-        }
-        .video-frame img {
-          width: 100%;
-          display: block;
-          object-fit: cover;
-          aspect-ratio: 4/5;
-        }
-        .video-play-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(252,228,236,0.3);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: background 0.2s;
-        }
-        .video-play-overlay:hover { background: rgba(252,228,236,0.15); }
-        .play-btn {
-          width: 60px; height: 60px;
-          border: 1.5px solid #c2185b;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(255,255,255,0.9);
-          transition: transform 0.2s;
-        }
-        .video-play-overlay:hover .play-btn { transform: scale(1.08); }
-        .play-btn svg {
-          width: 18px; height: 18px;
-          fill: #c2185b;
-          margin-left: 3px;
-        }
-        .video-caption {
-          position: absolute;
-          bottom: -16px; right: -16px;
-          background: #c2185b;
-          padding: 1rem 1.4rem;
-          z-index: 2;
-        }
-        .video-caption-text {
-          font-family: 'Playfair Display', serif;
-          font-size: 0.82rem;
-          font-style: italic;
-          color: #fff;
-        }
+        .video-corner { position: absolute; top: -14px; left: -14px; width: 40px; height: 40px; border-top: 1px solid var(--rose-light); border-left: 1px solid var(--rose-light); z-index: 2; }
+        .video-frame { position: relative; overflow: hidden; }
+        .video-frame img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/5; }
+        .play-btn { width: 58px; height: 58px; border: 1.5px solid var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.9); transition: transform 0.2s; }
+        .play-overlay:hover .play-btn { transform: scale(1.1); }
+        .play-btn svg { width: 16px; height: 16px; fill: var(--rose); margin-left: 3px; }
+        .video-caption { position: absolute; bottom: -14px; right: -14px; background: var(--rose); padding: 1rem 1.4rem; z-index: 2; }
+        .video-caption-text { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; font-style: italic; color: #fff; }
 
         /* SERVICES */
-        .services-section {
-          padding: 7rem 7%;
-          background: #fff9fb;
-        }
-        .section-header {
-          display: flex;
-          align-items: flex-end;
-          justify-content: space-between;
-          margin-bottom: 3.5rem;
-        }
-        .section-label {
-          font-size: 0.68rem;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: #c2185b;
-          margin-bottom: 0.8rem;
-          display: flex;
-          align-items: center;
-          gap: 0.8rem;
-        }
-        .section-label::before {
-          content: '';
-          display: block;
-          width: 32px;
-          height: 1px;
-          background: #c2185b;
-        }
-        .section-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.6rem;
-          font-weight: 400;
-          color: #1a1a1a;
-          line-height: 1.1;
-        }
-        .section-title em { font-style: italic; color: #c2185b; }
-        .view-all {
-          font-size: 0.72rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #bbb;
-          text-decoration: none;
-          border-bottom: 1px solid #eee;
-          padding-bottom: 2px;
-          transition: color 0.2s;
-          margin-bottom: 0.4rem;
-        }
-        .view-all:hover { color: #c2185b; border-color: #c2185b; }
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5px;
-        }
-        .service-card {
-          position: relative;
-          overflow: hidden;
-          cursor: pointer;
-        }
-        .service-card img {
-          width: 100%;
-          aspect-ratio: 3/4;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.6s ease;
-          filter: brightness(0.8);
-        }
-        .service-card:hover img {
-          transform: scale(1.05);
-          filter: brightness(0.65);
-        }
-        .service-book-tag {
-          position: absolute;
-          top: 1rem; right: 1rem;
-          border: 1px solid transparent;
-          color: transparent;
-          font-size: 0.6rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          padding: 0.35rem 0.9rem;
-          transition: all 0.3s;
-        }
-        .service-card:hover .service-book-tag {
-          border-color: rgba(255,255,255,0.6);
-          color: #fff;
-        }
-        .service-card-info {
-          position: absolute;
-          bottom: 0; left: 0; right: 0;
-          padding: 1.6rem 1.2rem;
-          background: linear-gradient(to top, rgba(26,10,18,0.85) 0%, transparent 100%);
-          transform: translateY(4px);
-          transition: transform 0.3s;
-        }
-        .service-card:hover .service-card-info { transform: translateY(0); }
-        .service-name {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.25rem;
-          color: #fff;
-          font-weight: 400;
-          margin-bottom: 0.25rem;
-        }
-        .service-meta {
-          font-size: 0.68rem;
-          letter-spacing: 0.1em;
-          color: #f8bbd0;
-          display: flex;
-          gap: 0.8rem;
-        }
+        .services-section { padding: 8rem 7%; background: var(--rose-blush); }
+        .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; }
+        .view-all { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #ccc; text-decoration: none; border-bottom: 1px solid #eee; padding-bottom: 2px; transition: all 0.2s; }
+        .view-all:hover { color: var(--rose); border-color: var(--rose); }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+        .service-card { position: relative; overflow: hidden; cursor: pointer; }
+        .service-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; transition: transform 0.7s ease; filter: brightness(0.78); }
+        .service-card:hover img { transform: scale(1.06); filter: brightness(0.6); }
+        .service-tag { position: absolute; top: 1rem; right: 1rem; border: 1px solid transparent; color: transparent; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.3rem 0.8rem; transition: all 0.3s; }
+        .service-card:hover .service-tag { border-color: rgba(255,255,255,0.55); color: #fff; }
+        .service-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.8rem 1.2rem; background: linear-gradient(to top, rgba(26,10,16,0.88) 0%, transparent 100%); transform: translateY(4px); transition: transform 0.3s; }
+        .service-card:hover .service-info { transform: translateY(0); }
+        .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #fff; font-weight: 400; margin-bottom: 0.3rem; }
+        .service-meta { font-size: 0.62rem; letter-spacing: 0.1em; color: var(--rose-light); display: flex; gap: 0.8rem; }
 
         /* PROCESS */
-        .process-section {
-          padding: 7rem 7%;
-          display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          gap: 5rem;
-          align-items: center;
-          background: #fff;
-        }
-        .process-image-stack { position: relative; }
-        .process-img-main {
-          width: 78%;
-          aspect-ratio: 4/5;
-          object-fit: cover;
-          display: block;
-        }
-        .process-img-accent {
-          position: absolute;
-          bottom: -32px; right: 0;
-          width: 46%;
-          aspect-ratio: 1/1;
-          object-fit: cover;
-          border: 4px solid #fff;
-        }
-        .process-steps { margin-top: 2.5rem; }
-        .process-step {
-          display: grid;
-          grid-template-columns: 50px 1fr;
-          gap: 1.5rem;
-          align-items: start;
-          margin-bottom: 2rem;
-          padding-bottom: 2rem;
-          border-bottom: 1px solid #fce4ec;
-        }
-        .process-step:last-child {
-          border-bottom: none;
-          margin-bottom: 0;
-        }
-        .step-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.2rem;
-          font-weight: 400;
-          color: #f8bbd0;
-          line-height: 1;
-        }
-        .step-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.1rem;
-          color: #1a1a1a;
-          margin-bottom: 0.4rem;
-          font-weight: 500;
-        }
-        .step-desc {
-          font-size: 0.82rem;
-          color: #aaa;
-          line-height: 1.8;
-          font-weight: 300;
-        }
+        .process-section { padding: 8rem 7%; display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: center; background: #fff; }
+        .process-stack { position: relative; }
+        .process-img-main { width: 80%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+        .process-img-accent { position: absolute; bottom: -28px; right: 0; width: 44%; aspect-ratio: 1; object-fit: cover; border: 4px solid #fff; box-shadow: 0 8px 32px rgba(194,24,91,0.1); }
+        .process-steps { margin-top: 2.5rem;  }
+        .process-step { display: grid; grid-template-columns: 48px 1fr; gap: 1.4rem; align-items: start; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rose-pale); }
+        .process-step:last-child { border-bottom: none; margin-bottom: 0; }
+        .step-n { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--rose-light); line-height: 1; }
+        .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--dark); margin-bottom: 0.4rem; font-weight: 500; }
+        .step-desc { font-size: 0.82rem; color: #bbb; line-height: 1.9; font-weight: 300; }
 
-        /* TESTIMONIALS */
-        .testimonials-section {
-          padding: 7rem 7%;
-          background: #fff9fb;
-          text-align: center;
-        }
-        .testimonials-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.8rem;
-          margin-top: 3.5rem;
-        }
-        .testimonial-card {
-          background: #fff;
-          border: 1px solid #fce4ec;
-          padding: 2.2rem;
-          text-align: left;
-        }
-        .quote-mark {
-          font-family: 'Playfair Display', serif;
-          font-size: 4rem;
-          line-height: 0.6;
-          color: #f8bbd0;
-          margin-bottom: 1.2rem;
-          display: block;
-        }
-        .stars {
-          color: #c2185b;
-          font-size: 0.75rem;
-          letter-spacing: 0.2em;
-          margin-bottom: 0.8rem;
-        }
-        .testimonial-text {
-          font-family: 'Playfair Display', serif;
-          font-size: 0.98rem;
-          font-style: italic;
-          color: #777;
-          line-height: 1.8;
-          margin-bottom: 1.2rem;
-        }
-        .testimonial-author {
-          font-size: 0.7rem;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: #c2185b;
-        }
-
+     /* TESTIMONIALS */
+.testimonials-section { padding: 8rem 7%; background: var(--rose-blush); text-align: center; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; }
+.testimonial-card { background: #fff; border: 1px solid var(--rose-pale); padding: 2.4rem; text-align: left; transition: box-shadow 0.3s; }
+.testimonial-card:hover { box-shadow: 0 8px 40px rgba(194,24,91,0.08); }
+.quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 0.5; color: var(--rose-pale); display: block; margin-bottom: 1.2rem; }
+.stars { color: black; font-size: 1.0rem; letter-spacing: 0.2em; margin-bottom: 0.8rem; }
+.testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: 1.0rem; font-style: italic; color: black; line-height: 1.8; margin-bottom: 1.2rem; font-weight: 300; }
+.testimonial-author { font-size: 1.0rem; letter-spacing: 0.2em; text-transform: uppercase; color: black; }
         /* CTA */
-        .cta-section {
-          padding: 7rem 7%;
-          background: #fce4ec;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-        }
-        .cta-offer {
-          display: inline-block;
-          background: #fff;
-          border: 1px solid #f48fb1;
-          color: #c2185b;
-          padding: 0.5rem 1.2rem;
-          font-size: 0.65rem;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          margin-bottom: 1.6rem;
-        }
-        .cta-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 3.2rem;
-          font-weight: 400;
-          line-height: 1.15;
-          color: #1a1a1a;
-          margin-bottom: 1.4rem;
-        }
-        .cta-title em { font-style: italic; color: #c2185b; }
-        .cta-sub {
-          font-size: 0.88rem;
-          color: #aaa;
-          line-height: 1.9;
-          font-weight: 300;
-          margin-bottom: 2.5rem;
-        }
-        .cta-image {
-          border-radius: 2px;
-          overflow: hidden;
-        }
-        .cta-image img {
-          width: 100%;
-          aspect-ratio: 4/3;
-          object-fit: cover;
-          display: block;
-        }
+        .cta-section { padding: 8rem 7%; background: var(--rose-pale); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .cta-pill { display: inline-block; background: #fff; border: 1px solid var(--rose-light); color: var(--rose); padding: 0.45rem 1.2rem; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 1.8rem; }
+        .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 400; line-height: 1.1; color: var(--dark); margin-bottom: 1.4rem; }
+        .cta-title em { font-style: italic; color: var(--rose); }
+        .cta-sub { font-size: 0.88rem; color: var(--muted); line-height: 2; font-weight: 300; margin-bottom: 2.5rem; }
+        .cta-image { overflow: hidden; }
+        .cta-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .cta-image:hover img { transform: scale(1.03); }
 
-        /* FOOTER */
-        .footer {
-          background: #1a0a10;
-          padding: 4rem 7% 2rem;
-        }
-        .footer-grid {
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr 1fr;
-          gap: 3rem;
-          margin-bottom: 3rem;
-        }
-        .footer-logo {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.7rem;
-          color: #f8bbd0;
-          margin-bottom: 0.8rem;
-          letter-spacing: 0.05em;
-        }
-        .footer-tagline {
-          font-size: 0.8rem;
-          color: #5a3f4a;
-          line-height: 1.8;
-          font-weight: 300;
-        }
-        .footer-heading {
-          font-size: 0.62rem;
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: #c2185b;
-          margin-bottom: 1.2rem;
-        }
-        .footer-links {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-        }
-        .footer-links a {
-          font-size: 0.8rem;
-          color: #4a303a;
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-        .footer-links a:hover { color: #f8bbd0; }
-        .footer-bottom {
-          border-top: 1px solid rgba(255,255,255,0.05);
-          padding-top: 1.5rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .footer-copy {
-          font-size: 0.7rem;
-          color: #2a181f;
-        }
-        .footer-social {
-          display: flex;
-          gap: 1.5rem;
-        }
-        .footer-social a {
-          font-size: 0.62rem;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #2a181f;
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-        .footer-social a:hover { color: #c2185b; }
+      /* FOOTER */
+.footer { background: var(--dark); padding: 5rem 7% 2.5rem; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--rose-light); margin-bottom: 0.8rem; font-weight: 400; }
+.footer-logo em { font-style: italic; }
+.footer-tagline { font-size: 0.78rem; color: #3a2028; line-height: 1.9; font-weight: 300; }
+.footer-heading { font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.2rem; font-weight: 400; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links a { font-size: 0.8rem; color: #3a2028; text-decoration: none; transition: color 0.2s; font-weight: 300; }
+.footer-links a:hover { color: var(--rose-light); }
+.whatsapp-link { display: inline-flex; align-items: center; gap: 0.5rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.04); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-size: 0.65rem; color: #2a151c; }
+.footer-hours { font-size: 0.65rem; color: #2a151c; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-title { font-size: 3.8rem; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .hero { height: auto; grid-template-columns: 1fr; }
+  .hero-left { padding: 3rem 6%; order: 2; }
+  .hero-left::after { display: none; }
+  .hero-right { order: 1; height: 60vw; max-height: 360px; }
+  .hero-title { font-size: 3rem; }
+  .about-section, .process-section, .cta-section { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 6%; }
+  .process-stack { display: none; }
+  .services-section, .testimonials-section { padding: 5rem 6%; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer { padding: 4rem 6% 2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: 2.4rem; }
+  .section-heading { font-size: 2.2rem; }
+  .cta-title { font-size: 2.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-stats { gap: 1.5rem; }
+  .hero-cta { flex-direction: column; align-items: flex-start; }
+}
       `}</style>
 
-      <div className="salon-root">
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-left">
+          <div className="hero-eyebrow">101 Vorster Avenue Glenanda</div>
+          <h1 className="hero-title">Your Hair,<em>Elevated.</em></h1>
+          <p className="hero-sub">Expert braids, bespoke wig installations and premium hair care crafted for women who demand nothing less than extraordinary.</p>
+          <div className="hero-cta">
+            <Link to="/booking" className="btn-rose">Book Appointment</Link>
+            <Link to="/services" className="btn-ghost">Our Services</Link>
+          </div>
+        </div>
+        <div className="hero-right">
+          <img src="/curlystyle.jpg.jpg" alt="Salon hero" />
+          <div className="hero-badge">
+            <div className="hero-badge-num">500+</div>
+            <div className="hero-badge-label">Happy<br />Clients</div>
+          </div>
+          <div className="hero-ribbon">
+            <span className="hero-ribbon-small">First Visit</span>
+            <span className="hero-ribbon-bold">10% Off</span>
+          </div>
+        </div>
+      </section>
 
-        {/* NAV */}
-        <nav className="nav">
-          <div className="nav-logo">GlamStudio</div>
-          <ul className="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <Link to="/booking" className="nav-book">Book Now</Link>
-        </nav>
+      {/* TICKER */}
+      <div className="ticker">
+        <div className="ticker-track">
+          {[...Array(2)].map((_, i) => (
+            <span key={i}>
+              <span className="ticker-item">Box Braids</span><span className="ticker-dot" />
+              <span className="ticker-item">Knotless Braids</span><span className="ticker-dot" />
+              <span className="ticker-item">Wig Installation</span><span className="ticker-dot" />
+              <span className="ticker-item">Silk Press</span><span className="ticker-dot" />
+              <span className="ticker-item">Hair Treatments</span><span className="ticker-dot" />
+              <span className="ticker-item">Cornrows</span><span className="ticker-dot" />
+              <span className="ticker-item">Colour Services</span><span className="ticker-dot" />
+              <span className="ticker-item">Loc Styles</span><span className="ticker-dot" />
+            </span>
+          ))}
+        </div>
+      </div>
 
-        {/* HERO */}
-        <section className="hero">
-          <div className="hero-left">
-            <div className="hero-eyebrow">Luxury Hair Studio · Johannesburg</div>
-            <h1 className="hero-title">
-              Your Hair,<br /><em>Elevated.</em>
-            </h1>
-            <h2 className="hero-sub" style={{fontSize: "20px"}}>
-              Expert braids, bespoke wig installations and premium hair care — crafted for women who demand nothing less than extraordinary.
-            </h2>
-            <div className="hero-cta">
-              <Link to="/booking" className="btn-pink">Book Appointment</Link>
-              <a href="#services" className="btn-outline-pink">Our Services</a>
+      {/* ABOUT */}
+      <section className="about-section" id="about">
+        <div data-section="about" style={fadeUp('about', 0)}>
+          <div className="section-eyebrow">Our Story</div>
+          <h2 className="section-heading">Where craft meets<br /><em>artistry</em></h2>
+          <p className="body-text">At Esther's Glowious Beauty, every appointment is a ritual. We've spent years perfecting the techniques that celebrate the beauty and versatility of textured hair </p>
+          <div className="about-stats">
+            <div><div className="stat-num">8+</div><div className="stat-label">Years Excellence</div></div>
+            <div><div className="stat-num">98%</div><div className="stat-label">Satisfaction Rate</div></div>
+            <div><div className="stat-num">500+</div><div className="stat-label">Happy Clients</div></div>
+          </div>
+        </div>
+        <div className="video-box" data-section="video" style={fadeIn('video', 0.2)}>
+          <div className="video-frame">
+            <img src= "/butterflies.jpg" alt="Salon preview" />
+            <div className="play-overlay">
+              {/* <div className="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" /></svg></div> */}
             </div>
           </div>
-          <div className="hero-right">
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900" alt="Salon hero" />
-            <div className="hero-badge">
-              <div className="hero-badge-num">500+</div>
-              <div className="hero-badge-label">Happy<br />Clients</div>
-            </div>
-            <div className="hero-ribbon">
-              <span className="hero-ribbon-small">First Visit</span>
-              <span className="hero-ribbon-bold">10% Off</span>
-            </div>
-          </div>
-        </section>
+          <div className="video-caption"><div className="video-caption-text">"Beauty is a ritual, not a routine."</div></div>
+        </div>
+      </section>
 
-        {/* TICKER */}
-        <div className="ticker">
-          <div className="ticker-track">
-            {[...Array(2)].map((_, i) => (
-              <span key={i}>
-                <span className="ticker-item">Box Braids</span><span className="ticker-dot" />
-                <span className="ticker-item">Knotless Braids</span><span className="ticker-dot" />
-                <span className="ticker-item">Wig Installation</span><span className="ticker-dot" />
-                <span className="ticker-item">Silk Press</span><span className="ticker-dot" />
-                <span className="ticker-item">Hair Treatments</span><span className="ticker-dot" />
-                <span className="ticker-item">Cornrows</span><span className="ticker-dot" />
-                <span className="ticker-item">Colour Services</span><span className="ticker-dot" />
-                <span className="ticker-item">Loc Styles</span><span className="ticker-dot" />
-              </span>
+      {/* SERVICES */}
+      <section className="services-section" id="services">
+        <div className="section-header" data-section="services" style={fadeUp('services', 0)}>
+          <div>
+            <div className="section-eyebrow">What We Offer</div>
+            <h2 className="section-heading" style={{ marginBottom: 0 }}>Our <em>Signature</em> Services</h2>
+          </div>
+          <Link to="/services" className="view-all">View All →</Link>
+        </div>
+        <div className="services-grid" data-section="services-grid" style={fadeIn('services-grid', 0.15)}>
+          {services.map((s, i) => (
+            <div key={i} className="service-card">
+              <img src={s.img} alt={s.name} />
+              <div className="service-tag">Book Now</div>
+              <div className="service-info">
+                <div className="service-name">{s.name}</div>
+                <div className="service-meta"><span>{s.duration}</span><span>{s.price}</span></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="process-section">
+        <div className="process-stack" data-section="process-img" style={fadeIn('process-img', 0)}>
+          <img className="process-img-main" src="/curls.jpg" alt="Braiding" />
+          <img className="process-img-accent" src="/Lemonade Fulani braids✨.jpg" alt="Hair detail" />
+        </div>
+        <div data-section="process" style={fadeUp('process', 0)}>
+          <div className="section-eyebrow">The Experience</div>
+          <h2 className="section-heading" style={{ marginBottom: '1.2rem' }}>Your visit,<br /><em>step by step</em></h2>
+          <div className="process-steps">
+            {steps.map((step, i) => (
+              <div key={i} className="process-step" data-section={`step-${i}`} style={fadeUp(`step-${i}`, i * 0.1)}>
+                <div className="step-n">{step.n}</div>
+                <div><div className="step-title">{step.t}</div><div className="step-desc">{step.d}</div></div>
+              </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* ABOUT + VIDEO */}
-        <section className="about-section" id="about">
-          <div data-section="about" style={fadeUp('about', 0)}>
-            <div className="about-label">Our Story</div>
-            <h2 className="about-title">
-              Where craft meets<br /><em>artistry</em>
-            </h2>
-            <p className="about-text" style={{fontSize: "20px"}}>
-              At GlamStudio, every appointment is a ritual. We've spent years perfecting the techniques that celebrate the beauty and versatility of textured hair — blending African braiding heritage with contemporary style.
-            </p>
-            <p className="about-text" style={{fontSize: "20px"}}>
-              Our stylists are not just hairdressers. They're artists, trained in the latest methods, committed to protecting your hair's health while creating looks that turn heads.
-            </p>
-            <div className="about-stats">
-              <div><div className="stat-num">8+</div><div className="stat-label">Years Excellence</div></div>
-              <div><div className="stat-num">98%</div><div className="stat-label">Satisfaction Rate</div></div>
-              <div><div className="stat-num">500+</div><div className="stat-label">Happy Clients</div></div>
+      {/* TESTIMONIALS */}
+      <section className="testimonials-section">
+        <div data-section="testimonials" style={fadeUp('testimonials', 0)}>
+          <div className="section-eyebrow" style={{ justifyContent: 'center' }}>Client Love</div>
+          <h2 className="section-heading">Loved by our <em>clients</em></h2>
+        </div>
+        <div className="testimonials-grid" data-section="testimonials-grid" style={fadeIn('testimonials-grid', 0.2)}>
+          {testimonials.map((t, i) => (
+            <div key={i} className="testimonial-card">
+              <span className="quote-mark">"</span>
+              <div className="stars">{'★'.repeat(t.stars)}</div>
+              <p className="testimonial-text">{t.text}</p>
+              <div className="testimonial-author">{t.name}</div>
             </div>
-          </div>
+          ))}
+        </div>
+      </section>
 
-          <div className="video-box" data-section="video" style={fadeIn('video', 0.2)}>
-            <div className="video-corner-line" />
-            <div className="video-frame">
-              <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=700" alt="Salon preview" />
-              <div className="video-play-overlay">
-                <div className="play-btn">
-                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" /></svg>
-                </div>
-              </div>
-            </div>
-            <div className="video-caption">
-              <div className="video-caption-text">"Beauty is a ritual, not a routine."</div>
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES */}
-        <section className="services-section" id="services">
-          <div className="section-header" data-section="services" style={fadeUp('services', 0)}>
-            <div>
-              <div className="section-label">What We Offer</div>
-              <h2 className="section-title">Our <em>Signature</em> Services</h2>
-            </div>
-            <a href="/services" className="view-all">View All Services →</a>
-          </div>
-          <div className="services-grid" data-section="services-grid" style={fadeIn('services-grid', 0.15)}>
-            {services.map((s, i) => (
-              <div key={i} className="service-card">
-                <img src={s.img} alt={s.name} />
-                <div className="service-book-tag">Book</div>
-                <div className="service-card-info">
-                  <div className="service-name">{s.name}</div>
-                  <div className="service-meta">
-                    <span>{s.duration}</span>
-                    <span>{s.price}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="process-section">
-          <div className="process-image-stack" data-section="process-img" style={fadeIn('process-img', 0)}>
-            <img className="process-img-main" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600" alt="Braiding" />
-            <img className="process-img-accent" src="https://images.unsplash.com/photo-1614272537596-d6ff57e9b64c?w=400" alt="Hair detail" />
-          </div>
-          <div data-section="process" style={fadeUp('process', 0)}>
-            <div className="section-label">The Experience</div>
-            <h2 className="section-title" style={{ marginBottom: '1rem' }}>
-              Your visit,<br /><em>step by step</em>
-            </h2>
-            <div className="process-steps">
-              {steps.map((step, i) => (
-                <div key={i} className="process-step" data-section={`step-${i}`} style={fadeUp(`step-${i}`, i * 0.1)}>
-                  <div className="step-num">{step.n}</div>
-                  <div>
-                    <div className="step-title">{step.t}</div>
-                    <div className="step-desc">{step.d}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section className="testimonials-section">
-          <div data-section="testimonials" style={fadeUp('testimonials', 0)}>
-            <div className="section-label" style={{ justifyContent: 'center' }}>Client Love</div>
-            <h2 className="section-title">Loved by our <em>clients</em></h2>
-          </div>
-          <div className="testimonials-grid" data-section="testimonials-grid" style={fadeIn('testimonials-grid', 0.2)}>
-            {testimonials.map((t, i) => (
-              <div key={i} className="testimonial-card">
-                <span className="quote-mark">"</span>
-                <div className="stars">{'★'.repeat(t.stars)}</div>
-                <p className="testimonial-text">{t.text}</p>
-                <div className="testimonial-author">{t.name}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="cta-section">
-          <div data-section="cta" style={fadeUp('cta', 0)}>
-            <div className="cta-offer">First Visit — 10% Off</div>
-            <h2 className="cta-title">
-              Ready to feel<br /><em>extraordinary?</em>
-            </h2>
-            <p className="cta-sub">
-              Book your appointment today. Whether you're a regular or first-timer, we promise an experience that goes far beyond the chair.
-            </p>
-            <Link to="/booking" className="btn-pink">Reserve Your Appointment →</Link>
-          </div>
-          <div className="cta-image" data-section="cta-img" style={fadeIn('cta-img', 0.2)}>
-            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800" alt="Salon CTA" />
-          </div>
-        </section>
-
-        {/* FOOTER */}
-        <footer className="footer" id="contact">
-          <div className="footer-grid">
-            <div>
-              <div className="footer-logo">GlamStudio</div>
-              <p className="footer-tagline">Luxury hair care rooted in<br />African beauty and artistry.<br />Johannesburg, South Africa.</p>
-            </div>
-            <div>
-              <div className="footer-heading">Services</div>
-              <ul className="footer-links">
-                <li><a href="#">Box Braids</a></li>
-                <li><a href="#">Knotless Braids</a></li>
-                <li><a href="#">Wig Installation</a></li>
-                <li><a href="#">Silk Press</a></li>
-                <li><a href="#">Treatments</a></li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-heading">Studio</div>
-              <ul className="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Pricing</a></li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-heading">Contact</div>
-              <ul className="footer-links">
-                <li><a href="#">Johannesburg, ZA</a></li>
-                <li><a href="#">info@glamstudio.co.za</a></li>
-                <li><a href="#">Mon–Sat 8am–7pm</a></li>
-                <li><a href="#">Book Online</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <div className="footer-copy">© 2026 GlamStudio. All rights reserved.</div>
-            <div className="footer-social">
-              <a href="#">Instagram</a>
-              <a href="#">TikTok</a>
-              <a href="#">Facebook</a>
-              <a href="#">WhatsApp</a>
-            </div>
-          </div>
-        </footer>
-
-      </div>
+      {/* CTA */}
+      <section className="cta-section">
+        <div data-section="cta" style={fadeUp('cta', 0)}>
+          <div className="cta-pill">First Visit — 10% Off</div>
+          <h2 className="cta-title">Ready to feel<br /><em>extraordinary?</em></h2>
+          <p className="cta-sub">Book your appointment today. Whether you're a regular or first-timer, we promise an experience that goes far beyond the chair.</p>
+          <Link to="/booking" className="btn-rose">Reserve Your Appointment →</Link>
+        </div>
+        <div className="cta-image" data-section="cta-img" style={fadeIn('cta-img', 0.2)}>
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800" alt="Salon CTA" />
+        </div>
+      </section>
+    {/* FOOTER */}
+<footer className="footer" id="contact">
+  <div className="footer-grid">
+    <div>
+      <div className="footer-logo">Esther's <em>Glowious</em></div>
+      <p className="footer-tagline">Luxury hair care • Johannesburg</p>
+    </div>
+    <div>
+      <div className="footer-heading">Services</div>
+      <ul className="footer-links">
+        <li><Link to="/services">Box Braids</Link></li>
+        <li><Link to="/services">Knotless Braids</Link></li>
+        <li><Link to="/services">Wig Installation</Link></li>
+        <li><Link to="/services">Silk Press</Link></li>
+      </ul>
+    </div>
+    <div>
+      <div className="footer-heading">Studio</div>
+      <ul className="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><Link to="/gallery">Gallery</Link></li>
+        <li><Link to="/booking">Pricing</Link></li>
+      </ul>
+    </div>
+    <div>
+      <div className="footer-heading">Connect</div>
+      <ul className="footer-links">
+        <li>
+          <a href="https://wa.me/27849770184" target="_blank" rel="noopener noreferrer" className="whatsapp-link">
+            📱 WhatsApp: +27 84 977 0184
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div className="footer-bottom">
+    <div className="footer-copy">© 2026 Esther's Glowious Beauty</div>
+    <div className="footer-hours">Mon–Sat 8am–7pm</div>
+  </div>
+</footer>
     </>
   );
 };

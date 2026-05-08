@@ -10,6 +10,8 @@ const Gallery = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewForm, setReviewForm] = useState({ client_name: '', rating: 5, comment: '' });
   const [loading, setLoading] = useState(true);
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+
 
   useEffect(() => {
     fetchImages();
@@ -17,7 +19,7 @@ const Gallery = () => {
 
   const fetchImages = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/gallery/images');
+      const response = await axios.get(`${BACKEND_URL}/api/gallery/images`);
       setImages(response.data);
       setLoading(false);
     } catch (error) {
@@ -28,7 +30,7 @@ const Gallery = () => {
 
   const fetchReviews = async (imageId) => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/reviews/${imageId}`);
+      const response = await axios.get(`${BACKEND_URL}/api/reviews/${imageId}`);
       setReviews(response.data);
     } catch (error) {
       console.error('Error fetching reviews:', error);
@@ -43,7 +45,7 @@ const Gallery = () => {
   const handleReviewSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/reviews', {
+      await axios.post(`${BACKEND_URL}/api/reviews`, {
         ...reviewForm,
         image_id: selectedImage.id,
       });

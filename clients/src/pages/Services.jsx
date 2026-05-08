@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Services = () => {
   const [activeCategory, setActiveCategory] = useState('braid_styles');
 
+
   const servicesData = {
     braid_styles: ['Box Braids', 'Cornrows', 'Goddess Braids', 'Knotless Braids', 'Lemonade Braids', 'Fulani Braids', 'Tribal Braids', 'Micro Braids'],
     wig_installation: ['Lace Front Wig Installation', 'Full Lace Wig Installation', '360 Lace Wig Installation', 'Glueless Wig Installation', 'Wig Customization', 'Wig Maintenance'],

@@ -8,6 +8,8 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "";
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ formData.append("username", username);
 formData.append("password", password);
 
 const response = await axios.post(
-  'http://localhost:8000/api/auth/login',
+  `${BACKEND_URL}/api/auth/login`,
   formData,
   {
     headers: {
